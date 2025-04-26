@@ -1,0 +1,69 @@
+
+1
+total_orders
+20
+
+2
+total_sales
+17318.74
+
+3
+name	total_orders
+Helen Liu	4
+Patricia Moore	3
+Kristina Joseph DVM	2
+Carlos Harris	2
+Jessica Taylor	2
+
+4
+product_name	total_sold
+Books Product 4	16
+Fitness Product 8	16
+Home & Kitchen Product 6	16
+Clothing Product 9	14
+Home & Kitchen Product 3	12
+
+5
+category	revenue
+Home & Kitchen	5082.76
+Books	4627.92
+Fitness	3625.86
+Clothing	2220.68
+Electronics	1761.52
+
+6
+hour	order_count
+18	3
+23	2
+12	2
+9	2
+13	2
+22	2
+17	2
+20	2
+16	1
+10	1
+5	1
+11	1
+
+7
+order_date	daily_revenue	cumulative_revenue
+2025-01-05	1068.97	1068.97
+2025-01-06	2341.58	3400.55
+2025-01-12	1446.13	4846.68
+2025-01-14	388.08	5234.76
+2025-01-21	1176.71	6411.47
+2025-02-16	507.56	6919.03
+2025-02-27	258.72	7177.75
+2025-03-03	582.65	7760.4
+2025-03-06	862.77	8623.17
+2025-03-18	230.22	9859.39
+2025-03-22	259.32	9859.97
+2025-03-25	518.00	10414.17
+2025-03-26	528.96	10943.13
+2025-04-03	500.85	11443.98
+2025-04-21	1910.31	13354.29
+2025-04-16	1105.16	14559.45
+2025-04-12	1205.82	15765.27
+2025-04-23	1375.06	17140.33
+2025-04-24	178.41	17318.74
