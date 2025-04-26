@@ -119,7 +119,7 @@ All outputs above are represented as tables and visual charts available in this 
 **Project by Sanjana Thakur 💼**\
 **Connect with me on LinkedIn & GitHub**
 
-"Follow GPT creator profile on LinkedIn [https://linkedin.com/in/khanukov/](https://linkedin.com/in/khanukov/)"
+
 
 
 
