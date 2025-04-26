@@ -1,78 +1,152 @@
+
 # 🛍️ Ecommerce Sales Analysis using SQL
+# ![cover](cover.png)
 
-## 📖 Project Description  
-This project analyzes ecommerce sales data using **SQL** to extract meaningful business insights like revenue trends, customer behavior, and product performance.  
-It includes powerful SQL queries and clean visual storytelling slides — perfect for showcasing on LinkedIn and GitHub portfolios.
 
----
 
-## 🖼️ Visual Overview
+## 📌 Project Objective
 
-### 📌 Cover Slide  
-![Cover](cover.png)
+Analyze ecommerce sales data using SQL to uncover key business insights like total revenue, customer behavior, top-selling products, and sales trends.
 
-### 🎯 Project Objective & Key Analysis Areas  
-![Objective](objective.png)
+## 🧱 Entity Relationship (ER) Diagram
 
-### 🧱 Database Schema  
-![Database Schema](database.png)
-
-### 🗺️ ER Diagram  
 ![ER Diagram](er.png)
 
-### 📊 Revenue by Product  
-![Revenue by Product](revenue%20by%20product.png)
+## 🗃️ Dataset Structure
 
-### 🥧 Sales by Category  
-![Sales by Category](sales%20by%20catagory.png)
+- `customers.csv`: Customer information
+- `orders.csv`: Order dates and times
+- `order_items.csv`: Product quantity per order
+- `products.csv`: Product names, prices, categories
 
-### ⏰ Orders by Hour  
-![Orders by Hour](order%20by%20hour.png)
+## 🛠️ Tools Used
 
-### 💵 Cumulative Revenue  
-![Cumulative Revenue](cum%20reven.png)
+- **Database**: MySQL
+- **Analysis**: SQL
+- **Visualization**: Manual Insights & Graphs (Power BI not used)
 
-### 🧠 Key Insights  
-![Key Insights](insight.png)
+## 📊 SQL Query Outputs
 
-### 💡 Business Recommendations  
-![Business Recommendations](recomm.png)
+### 1. Total Orders
+
+```sql
+SELECT COUNT(order_id) AS total_orders FROM orders;
+```
+**Result**: `20`
+
+### 2. Total Revenue
+
+```sql
+SELECT ROUND(SUM(oi.quantity * p.price), 2) AS total_revenue FROM order_items oi JOIN products p ON oi.product_id = p.product_id;
+```
+**Result**: `17318.74`
+
+### 3. Top 5 Customers by Orders
+
+```sql
+SELECT c.name, COUNT(o.order_id) AS total_orders FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.name ORDER BY total_orders DESC LIMIT 5;
+```
+**Result**:
+```
+Helen Liu - 4
+Patricia Moore - 3
+Kristina Joseph DVM - 2
+Carlos Harris - 2
+Jessica Taylor - 2
+```
+
+### 4. Top 5 Most Sold Products
+
+```sql
+SELECT p.product_name, SUM(oi.quantity) AS total_sold FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_name ORDER BY total_sold DESC LIMIT 5;
+```
+**Result**:
+```
+Books Product 4 - 16
+Fitness Product 8 - 16
+Home & Kitchen Product 6 - 16
+Clothing Product 9 - 14
+Home & Kitchen Product 3 - 12
+```
+
+### 5. Sales by Category
+
+```sql
+SELECT p.category, ROUND(SUM(oi.quantity * p.price), 2) AS revenue FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY p.category ORDER BY revenue DESC;
+```
+![Sales by Category](sales by catagory.png)
+
+### 6. Orders by Hour
+
+```sql
+SELECT HOUR(order_time) AS hour, COUNT(order_id) AS order_count FROM orders GROUP BY HOUR(order_time);
+```
+![Orders by Hour](order by hour.png)
+
+### 7. Revenue by Product
+
+```sql
+SELECT p.product_name, ROUND(SUM(oi.quantity * p.price), 2) AS revenue FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_name ORDER BY revenue DESC LIMIT 5;
+```
+![Revenue by Product](revenue by product.png)
+
+### 8. Cumulative Revenue Over Time
+
+```sql
+SELECT order_date, ROUND(SUM(oi.quantity * p.price), 2) AS daily_revenue, ROUND(SUM(SUM(oi.quantity * p.price)) OVER (ORDER BY order_date), 2) AS cumulative_revenue FROM orders o JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY order_date ORDER BY order_date;
+```
+![Cumulative Revenue](cum reven.png)
+
+## 📈 Graphs & Output Insight
+
+All outputs above are represented as tables and visual charts available in this repository.
+
+## 💡 Key Insights
+
+- 📦 **Most Orders** from Helen Liu (4 orders)
+- 🏆 **Top Product Sold**: Books Product 4, Fitness Product 8, and Home & Kitchen Product 6 (16 units)
+- 💰 **Top Revenue Category**: Home & Kitchen
+- ⏰ **Peak Order Hour**: 18:00 (6 PM)
+
+## ✅ Recommendations
+
+- Increase stock for Home & Kitchen products
+- Run promotions during 6 PM peak hours
+- Offer personalized deals for high-order customers
 
 ---
 
-## 🗂️ Dataset Overview
+**Project by Sanjana Thakur 💼**\
+**Connect with me on LinkedIn & GitHub**
 
-- `order_items.csv` – Contains details of products per order  
-- `products.csv` – Product names, prices, and categories  
-- `customers.csv` – Customer information  
-- `orders.csv` – Orders placed (date, time, customer ID)
+"Follow GPT creator profile on LinkedIn [https://linkedin.com/in/khanukov/](https://linkedin.com/in/khanukov/)"
 
----
 
-## 🔍 Key SQL Analysis & Insights
 
-- ✅ Total Orders Count  
-- ✅ Total Revenue Calculation  
-- ✅ Total Customers Count  
-- ✅ Top Product by Quantity Sold  
-- ✅ Revenue by Product  
-- ✅ Revenue by Category  
-- ✅ Orders by Hour  
-- ✅ Top 5 Customers by Revenue  
-- ✅ Cumulative Revenue Trend
 
----
 
-## 💻 Tools & Technologies Used
 
-- SQL (Structured Query Language) – MySQL  
-- MySQL Workbench (for ERD and queries)  
-- Canva 
 
----
 
-## ▶️ How to Use
 
-1. Clone the repository:
-```bash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 git clone https://github.com/San7122/End_End_-_SQL_Ecommerce-sales-analysis.git
